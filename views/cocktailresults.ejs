@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= cocktail.strDrink %> Recipe</title>
+  <!-- Bootstrap initialization -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- custom styles for background, text, nav bar size, go back button, drink title, and the drink card -->
+  <style>
+    body 
+    {
+      background-color: #2E8B57; 
+    }
+    h1, h2, a 
+    {
+      color: white;
+    }
+    p
+    {
+      color:black;
+    }
+    .navbar-brand 
+    {
+      font-size: 2rem; 
+    }
+    .btn-green {
+      background-color: green;
+      color: white;
+    }
+    .drink-title {
+      color: white;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    .card {
+      background-color: #ffffff;
+    }
+  </style>
+
+</head>
+<body>
+  <!-- Same Nav bar styling as index.ejs for continutity -->
+  <!-- Can also be used to click on to route back to index.ejs -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">Cocktail Database</a>
+
+      <span class="navbar-text ml-auto">
+        Ryan Wood 
+      </span>
+
+    </div>
+  </nav>
+  <!-- main element of the website -->
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <!-- title of randomized drink -->
+        <h2 class="drink-title text-center"><%= cocktail.strDrink %></h2>
+        <div class="card">
+          <!-- pull image to go under drink title -->
+          <img src="<%= cocktail.strDrinkThumb %>" class="card-img-top" alt="<%= cocktail.strDrink %>">
+          <div class="card-body">
+            <!-- ingredient display -->
+            <h4>Ingredients:</h4>
+            <ul class="list-group list-group-flush">
+              <% for(let i = 1; i <= 15; i++) { %>
+                <% if (cocktail['strIngredient' + i]) { %>
+                  <li class="list-group-item"><%= cocktail['strIngredient' + i] %> - <%= cocktail['strMeasure' + i] || '' %></li>
+                <% } %>
+              <% } %>
+            </ul>
+
+            <!-- Instructions Section -->
+            <h4 class="mt-4">Instructions:</h4>
+            <% if (cocktail.strInstructions) { %>
+              <p class="card-text"><%= cocktail.strInstructions %></p> 
+              <!-- in case drink instructions are unavailable but i am unaware if this is applicable -->
+            <% } else { %>
+              <p class="card-text">No instructions available.</p> 
+            <% } %>
+
+            <!-- go back button -->
+            <a href="/" class="btn btn-green">Go Back</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- bootstrap for my interactive elements -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

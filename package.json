@@ -1,0 +1,18 @@
+{
+  "name": "mp2-cocktails",
+  "version": "1.0.0",
+  "description": "A web app that provides random cocktail recipes using CocktailDB API.",
+  "main": "app.js",
+  "scripts": 
+  {
+    "start": "node app.js"
+  },
+  "author": "Ryan Wood",
+  "license": "ISC",
+  "dependencies": 
+  {
+    "axios": "^1.7.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.0"
+  }
+}
